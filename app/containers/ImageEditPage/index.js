@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import styles from 'styles/style.css';
+import styles from 'styles/editor.css';
 
 import messages from './messages'
 
@@ -11,10 +11,25 @@ export default class VideoEditPage extends React.PureComponent {
 
         return (
 
-            <div>
-                <h1 className={styles.heading1}>
-                    <FormattedMessage {...messages.header} />
-                </h1>
+            <div className={styles.body}>
+                <div className={styles.header}>
+
+                </div>
+                <div className={styles.TSF}>
+                    <div className={styles.tools}>
+                        <p>Tools</p>
+                    </div>
+                    <div className={styles.screen}>
+
+                    </div>
+                </div>
+                <div className={styles.bottomToolBar}>
+                
+                </div>
+                <div className={styles.toolBarCenterBox}>
+
+                </div>
+
             </div>
             
         )

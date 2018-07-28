@@ -1,12 +1,12 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { history } from '../../app';
 
-import styles from 'styles/style.css';
+import styles from 'styles/editor.css';
 
 import messages from './messages'
 import VideoSplitter from 'components/VideoSplitter.js';
 import DragDrop from 'components/DragDrop.js';
-import { history } from '../../app';
 
 export default class HomePage extends React.PureComponent {
 
