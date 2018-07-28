@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import styles from './DragDrop.css'
 
-class dragDrop extends Component {
+class DragDrop extends Component {
+	constructor(props) {
+        super(props)
+    }
 
 	allowDrop(ev) {
 		ev.preventDefault();
@@ -19,8 +22,14 @@ class dragDrop extends Component {
 
 	render() {
         return (
-            <div className='trash' ondrop={this.drop(event)} ondragover={this.allowDrop(event)}>   
-            </div>
+			<div>
+				<div id='div1' className={styles.trash} ondrop={this.drop(event)} ondragover={this.allowDrop(event)}>   
+            	</div>
+
+				<div className={styles.testImage}>
+					<image id='drag1' src='images/testImage.jpg' draggable={true} ondragover={this.allowDrop(event)} />
+				</div>
+			</div>
         )
     }
 }

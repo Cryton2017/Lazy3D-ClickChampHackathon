@@ -12,9 +12,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-<<<<<<< HEAD
+
 import style from 'styles/style.css';
-import style from 'styles/style.css'
 
 import messages from './messages'
 import VideoSplitter from 'components/VideoSplitter.js';
@@ -23,6 +22,7 @@ import DragDrop from 'components/DragDrop.js';
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
     render() {
+
         return (
             <div className="body">
                 <h1 className="heading1">
@@ -40,13 +40,17 @@ export default class HomePage extends React.PureComponent {
                 <div className="videoSplitter">
                     <VideoSplitter frames={console.log} percentage={console.log} />
                 </div>
-<<<<<<< HEAD
-                <div className='trash'>
+                {/* <div className='trash'>
                     <DragDrop />
-                </div>
-                
+                </div> */}
                 {/* <input type='button' id='btnTest' className='buttons' value='Select File' /> */}
             </div>
+
+            
         )
+
+        
     }
+
+    
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Progress from 'react-progressbar';
 import styles from './VideoSplitter.css'
 
 class VideoSplitter extends Component {
@@ -50,7 +51,7 @@ class VideoSplitter extends Component {
                     video.currentTime = time
                     await this.timeout(400)
                     await this.generateFrame(video)
-                    this.setState({ percentage: (i + 1) / frameTimes.length })
+                    this.setState({ percentage: ((i + 1) / frameTimes.length) * 100 })
 
                     if (this.props.percentage) {
                         this.props.percentage(this.state.percentage)
@@ -96,9 +97,15 @@ class VideoSplitter extends Component {
     render() {
         return (
             <div>
-                <input type="file" onChange={this.handleChange} accept="video/*" />
-                <video className={styles.video} />
+                <div>
+                    <input type="file" onChange={this.handleChange} accept="video/*" />
+                    <video className={styles.video} />
+                </div>
+                <div className={styles.progress}>
+                    <Progress completed={this.state.percentage} />
+                </div>
             </div>
+            
         )
     }
 }

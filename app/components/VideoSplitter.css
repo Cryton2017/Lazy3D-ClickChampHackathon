@@ -8,3 +8,9 @@
   height: auto;
   display: inline-block;
 }
+
+:local(.progress){
+  border: 1px solid grey;
+  background-color: grey;
+  border-radius: 20px;
+}
