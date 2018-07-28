@@ -13,6 +13,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import style from 'styles/style.css'
+import VideoSplitter from '../../components/VideoSplitter'
 
 import messages from './messages'
 
@@ -34,6 +35,12 @@ export default class HomePage extends React.PureComponent {
                 <input type='button' id='btnTest' className='buttons' value='Select File' />
             </div>
       
+            <div className="body">
+                <h1 className="heading1">
+                    <FormattedMessage {...messages.header} />
+                </h1>
+                <VideoSplitter />
+            </div>
         )
     }
 }

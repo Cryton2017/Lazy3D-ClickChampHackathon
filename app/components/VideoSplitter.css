@@ -1,0 +1,10 @@
+:local(.video) {
+  width: 200px;
+  background: blue;
+}
+
+:local(.thumbnail) {
+  width: 200px;
+  height: auto;
+  display: inline-block;
+}
