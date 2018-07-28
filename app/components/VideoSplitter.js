@@ -7,6 +7,7 @@ class VideoSplitter extends Component {
         this.state = {
             blobUrl: '',
             percentage: 0,
+            frames: [],
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -41,6 +42,7 @@ class VideoSplitter extends Component {
 
             video.onloadeddata = async () => {
                 // Create frame every .5s
+                this.setState({ frames: [] })
                 const frameTimes = this.range(0, video.duration, 0.5)
 
                 for (let i = 0; i < frameTimes.length; i++) {
@@ -49,7 +51,14 @@ class VideoSplitter extends Component {
                     await this.timeout(400)
                     await this.generateFrame(video)
                     this.setState({ percentage: (i + 1) / frameTimes.length })
-                    this.props.percentage(this.state.percentage)
+
+                    if (this.props.percentage) {
+                        this.props.percentage(this.state.percentage)
+                    }
+                }
+
+                if (this.props.frames) {
+                    this.props.frames(this.state.frames)
                 }
             }
             video.src = url
@@ -75,34 +84,19 @@ class VideoSplitter extends Component {
 
         const frameUri = canvas.toDataURL()
 
-        const img = new Image()
-        img.src = frameUri
-        img.className = styles.thumbnail
-        document.querySelector('#app').appendChild(img)
+        this.state.frames.push(frameUri)
+        // const img = new Image()
+        // img.src = frameUri
+        // img.className = styles.thumbnail
+        // document.querySelector('#app').appendChild(img)
 
         return frameUri
-    }
-
-    frameImgs(urls) {
-        if (!(urls instanceof Array)) {
-            urls = [urls]
-        }
-        urls.map(url => {
-            const img = document.createElement('img')
-
-            img.onload = () => {
-                document.querySelector('#app').appendChild(img)
-            }
-
-            img.src = url
-            img.className = styles.thumbnail
-        })
     }
 
     render() {
         return (
             <div>
-                <input type="file" onChange={this.handleChange} accept="video/*"/>
+                <input type="file" onChange={this.handleChange} accept="video/*" />
                 <video className={styles.video} />
             </div>
         )
