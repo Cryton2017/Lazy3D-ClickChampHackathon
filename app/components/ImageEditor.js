@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import styles from './ImageEditor.css'
+import GrahamScan from 'graham_scan'
+import sortByDistance from 'sort-by-distance'
 
 class ImageEditor extends Component {
     constructor(props) {
@@ -54,8 +56,11 @@ class ImageEditor extends Component {
         })
 
         canvas.addEventListener('mousedown', ev => {
-            const x = ev.clientX
-            const y = ev.clientY
+            this.setState({ drawingPoints: [] })
+            context.clearRect(0, 0, canvas.width, canvas.height)
+
+            const x = ev.offsetX
+            const y = ev.offsetY
             context.moveTo(x, y)
             context.beginPath()
             this.setState({ mouseDown: true })
@@ -80,8 +85,8 @@ class ImageEditor extends Component {
     }
 
     draw(context, event) {
-        const x = event.clientX
-        const y = event.clientY
+        const x = event.offsetX
+        const y = event.offsetY
 
         context.lineTo(x, y)
 
