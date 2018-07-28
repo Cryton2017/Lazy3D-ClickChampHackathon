@@ -9,23 +9,31 @@
  * the linting exception.
  */
 
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import React from 'react'
+import { FormattedMessage } from 'react-intl'
 
-import style from 'styles/style.css';
+import style from 'styles/style.css'
 
-import messages from './messages';
+import messages from './messages'
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
-  render() {
-    return (
-      <div className='body'>
-        <h1 className='heading1'>
-          <FormattedMessage {...messages.header} />
-        </h1>
-      </div>
+    render() {
+        return (
+            <div className='body'>
+                <h1 className='heading1'>
+                    <FormattedMessage {...messages.header} />
+                </h1>
+                <p className='paragraph'>
+                    <FormattedMessage {...messages.info1} /><br />
+                    <FormattedMessage {...messages.info2} /><br />
+                    <FormattedMessage {...messages.info3} /><br />
+                    <FormattedMessage {...messages.info4} />
+                </p>
+                <input type="file" name="pic" className='buttons' accept="image/*" />
+                <input type='button' id='btnTest' className='buttons' value='Select File' />
+            </div>
       
-    );
-  }
+        )
+    }
 }
