@@ -1,4 +1,4 @@
-.body{
+:local(.body){
     font-size: 13;
     font-family: Arial;
     position: absolute;
@@ -10,15 +10,15 @@
     color: black;
 }
 
-.heading1{
+:local(.heading1){
     text-align: center;
 }
 
-.paragraph{
+:local(.paragraph){
     text-align: center;
 }
 
-.buttons{
+:local(.buttons){
     position: relative;
     left: 37.5%;
     text-align: center;
@@ -35,14 +35,14 @@
     border: 2px solid rgb(64, 75, 72);
 }
 
-.videoSplitter{
+:local(.videoSplitter){
     text-align: center;
     width: 50%;
     position: relative;
     left: 25%;
 }
 
-.trash{
+:local(.trash){
     position: relative;
     right: 5%;
     bottom: 5%;

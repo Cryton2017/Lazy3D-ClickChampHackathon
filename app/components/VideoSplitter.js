@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Progress from 'react-progressbar'
 import styles from './VideoSplitter.css'
 
