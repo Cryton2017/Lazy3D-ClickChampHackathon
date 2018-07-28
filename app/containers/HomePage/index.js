@@ -1,19 +1,25 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import styles from 'styles/style.css';
+import styles from 'styles/style.css'
 
 import messages from './messages'
-import VideoSplitter from 'components/VideoSplitter.js';
-import DragDrop from 'components/DragDrop.js';
-import { history } from '../../app';
+import VideoSplitter from 'components/VideoSplitter.js'
+import BadPractice from 'components/BadPractice.js'
+import DragDrop from 'components/DragDrop.js'
+import { history } from '../../app'
 
 export default class HomePage extends React.PureComponent {
-
-    waitForRender(percentage){
-        if (percentage >= 100){
-            history.push('/ImageEditPage');
+    waitForRender(percentage) {
+        if (percentage >= 100) {
+            setTimeout(() => {
+                history.push('/ImageEditPage')
+            }, 500)
         }
+    }
+
+    setFrames(frames) {
+        BadPractice.set(frames)
     }
 
     render() {
@@ -32,7 +38,10 @@ export default class HomePage extends React.PureComponent {
                     <FormattedMessage {...messages.info4} />
                 </p>
                 <div className={styles.videoSplitter}>
-                    <VideoSplitter frames={console.log} percentage={this.waitForRender} />
+                    <VideoSplitter
+                        frames={this.setFrames}
+                        percentage={this.waitForRender}
+                    />
                 </div>
                 {/* <div className={styles.trash}>
                     <DragDrop />
