@@ -1,0 +1,15 @@
+:local(.canvasWrapper) {
+  position: relative;
+  overflow: hidden;
+}
+
+:local(.canvas) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+:local(.clearButton) {
+  position: relative;
+  display: block;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Progress from 'react-progressbar';
+import Progress from 'react-progressbar'
 import styles from './VideoSplitter.css'
 
 class VideoSplitter extends Component {
@@ -102,10 +102,9 @@ class VideoSplitter extends Component {
                     <video className={styles.video} />
                 </div>
                 <div className={styles.progress}>
-                    <Progress completed={this.state.percentage} />
+                    <Progress completed={this.state.percentage} color="blue" />
                 </div>
             </div>
-            
         )
     }
 }
