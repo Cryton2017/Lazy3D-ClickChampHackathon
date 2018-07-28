@@ -41,3 +41,9 @@
     position: relative;
     left: 25%;
 }
+
+.trash{
+    position: relative;
+    right: 5%;
+    bottom: 5%;
+}
