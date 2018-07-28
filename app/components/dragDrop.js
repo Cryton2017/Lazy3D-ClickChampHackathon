@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import styles from './DragDrop.css'
 
 class DragDrop extends Component {
-	constructor(props) {
-        super(props)
-    }
 
 	allowDrop(ev) {
 		ev.preventDefault();

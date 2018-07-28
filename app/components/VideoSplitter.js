@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Progress from 'react-progressbar';
 import styles from './VideoSplitter.css'
+
 
 class VideoSplitter extends Component {
     constructor(props) {
@@ -93,6 +95,8 @@ class VideoSplitter extends Component {
 
         return frameUri
     }
+
+    
 
     render() {
         return (
