@@ -34,3 +34,10 @@
     color: rgb(64, 75, 72);
     border: 2px solid rgb(64, 75, 72);
 }
+
+.videoSplitter{
+    text-align: center;
+    width: 50%;
+    position: relative;
+    left: 25%;
+}

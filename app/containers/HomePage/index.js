@@ -13,7 +13,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
 import style from 'styles/style.css'
-import VideoSplitter from '../../components/VideoSplitter'
+import VideoSplitter from 'components/VideoSplitter.js'
 
 import messages from './messages'
 
@@ -34,14 +34,11 @@ export default class HomePage extends React.PureComponent {
                     <br />
                     <FormattedMessage {...messages.info4} />
                 </p>
-                <input type="file" name="pic" className="buttons" accept="video/*" />
-                <input
-                    type="button"
-                    id="btnTest"
-                    className="buttons"
-                    value="Select File"
-                />
-                <VideoSplitter percentage={console.log} />
+                <div className="videoSplitter">
+                    <VideoSplitter />
+                </div>
+
+                {/* <input type='button' id='btnTest' className='buttons' value='Select File' /> */}
             </div>
         )
     }
