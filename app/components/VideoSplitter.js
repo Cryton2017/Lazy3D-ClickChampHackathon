@@ -77,7 +77,7 @@ class VideoSplitter extends Component {
     render() {
         return (
             <div>
-                <input type="file" onChange={this.handleChange} />
+                <input type="file" onChange={this.handleChange} accept="video/*"/>
                 <video className={styles.video} />
             </div>
         )
