@@ -12,7 +12,9 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
+<<<<<<< HEAD
 import style from 'styles/style.css';
+import style from 'styles/style.css'
 
 import messages from './messages'
 import VideoSplitter from 'components/VideoSplitter.js';
@@ -22,19 +24,23 @@ import DragDrop from 'components/DragDrop.js';
 export default class HomePage extends React.PureComponent {
     render() {
         return (
-            <div className='body'>
-                <h1 className='heading1'>
+            <div className="body">
+                <h1 className="heading1">
                     <FormattedMessage {...messages.header} />
                 </h1>
-                <p className='paragraph'>
-                    <FormattedMessage {...messages.info1} /><br />
-                    <FormattedMessage {...messages.info2} /><br />
-                    <FormattedMessage {...messages.info3} /><br />
+                <p className="paragraph">
+                    <FormattedMessage {...messages.info1} />
+                    <br />
+                    <FormattedMessage {...messages.info2} />
+                    <br />
+                    <FormattedMessage {...messages.info3} />
+                    <br />
                     <FormattedMessage {...messages.info4} />
                 </p>
-                <div className='videoSplitter'>
-                    <VideoSplitter />
+                <div className="videoSplitter">
+                    <VideoSplitter frames={console.log} percentage={console.log} />
                 </div>
+<<<<<<< HEAD
                 <div className='trash'>
                     <DragDrop />
                 </div>

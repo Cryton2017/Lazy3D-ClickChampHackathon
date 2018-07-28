@@ -5,17 +5,23 @@ class VideoSplitter extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            fileObject: null,
-            fileArrayBuffer: null,
             blobUrl: '',
-            frameSrc: '',
+            percentage: 0,
+            frames: [],
         }
 
         this.handleChange = this.handleChange.bind(this)
     }
 
+    timeout(ms) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve()
+            }, ms)
+        })
+    }
+
     range(start, stop, step = 1) {
-        console.log(start, stop, step)
         return Array(Math.ceil((stop - start) / step))
             .fill(start)
             .map((x, y) => x + y * step)
@@ -33,15 +39,27 @@ class VideoSplitter extends Component {
             // this.setState({ blobUrl: url })
 
             const video = document.querySelector('video')
-            video.onloadeddata = () => {
+
+            video.onloadeddata = async () => {
                 // Create frame every .5s
+                this.setState({ frames: [] })
                 const frameTimes = this.range(0, video.duration, 0.5)
 
-                const frames = frameTimes.map(time => {
+                for (let i = 0; i < frameTimes.length; i++) {
+                    const time = frameTimes[i]
                     video.currentTime = time
-                    return this.generateFrames(video)
-                })
-                this.frameImgs(frames)
+                    await this.timeout(400)
+                    await this.generateFrame(video)
+                    this.setState({ percentage: (i + 1) / frameTimes.length })
+
+                    if (this.props.percentage) {
+                        this.props.percentage(this.state.percentage)
+                    }
+                }
+
+                if (this.props.frames) {
+                    this.props.frames(this.state.frames)
+                }
             }
             video.src = url
         }
@@ -49,7 +67,15 @@ class VideoSplitter extends Component {
         reader.readAsArrayBuffer(file)
     }
 
-    generateFrames(video) {
+    waitForEvent(el, event = 'onload') {
+        return new Promise(resolve => {
+            el[event] = () => {
+                resolve()
+            }
+        })
+    }
+
+    async generateFrame(video) {
         const canvas = document.createElement('canvas')
         canvas.width = video.videoWidth
         canvas.height = video.videoHeight
@@ -57,27 +83,20 @@ class VideoSplitter extends Component {
         canvas.getContext('2d').drawImage(video, 0, 0)
 
         const frameUri = canvas.toDataURL()
+
+        this.state.frames.push(frameUri)
+        // const img = new Image()
+        // img.src = frameUri
+        // img.className = styles.thumbnail
+        // document.querySelector('#app').appendChild(img)
+
         return frameUri
-    // this.setState({ frameSrc: frameUri })
-    }
-
-    frameImgs(urls) {
-        urls.map(url => {
-            const img = document.createElement('img')
-
-            img.onload = () => {
-                document.querySelector('#app').appendChild(img)
-            }
-
-            img.src = url
-            img.className = styles.thumbnail
-        })
     }
 
     render() {
         return (
             <div>
-                <input type="file" onChange={this.handleChange} accept="video/*"/>
+                <input type="file" onChange={this.handleChange} accept="video/*" />
                 <video className={styles.video} />
             </div>
         )
