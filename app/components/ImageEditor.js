@@ -19,22 +19,29 @@ class ImageEditor extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if (this.props.currentIndex === newProps.currentIndex) {
+        if (
+            this.props.width !== newProps.width ||
+      this.props.height !== newProps.height
+        ) {
+            this.loadImage(newProps.width, newProps.height)
+        } else if (this.props.currentIndex === newProps.currentIndex) {
             return false
+        } else {
+            this.loadImage()
         }
-
-        this.loadImage()
     }
 
-    loadImage() {
+    loadImage(width = 0, height = 0) {
         const canvas = document.querySelector('#image-canvas')
         const canvas2 = document.querySelector('#editor-canvas')
         const canvasWrapper = document.querySelector('#canvas-wrapper')
 
         const context = canvas.getContext('2d')
 
-        const imgWidth = 900
-        const img = new Image(imgWidth, imgWidth * 0.5625)
+        const imgWidth = width || this.props.width || 900
+        const imgHeight = height || this.props.height || imgWidth * 0.5625
+
+        const img = new Image(imgWidth, imgHeight)
 
         img.onload = () => {
             canvas.width = img.width

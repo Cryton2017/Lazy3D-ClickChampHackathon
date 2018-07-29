@@ -10,8 +10,6 @@ import BadPractice from 'components/BadPractice'
 import JSZip from 'jszip'
 import { saveAs } from 'file-saver/FileSaver'
 
-import TestImg from './TestImg'
-
 /* eslint-disable react/prefer-stateless-function */
 export default class VideoEditPage extends React.Component {
     constructor(props) {
@@ -19,9 +17,10 @@ export default class VideoEditPage extends React.Component {
         this.state = {
             frames: [],
             currentFrameIdx: 0,
+            editorWidth: 0,
+            editorHeight: 0,
             html: '',
         }
-        this.addImageToEditor = this.addImageToEditor.bind(this)
     }
 
     componentWillMount() {
@@ -30,6 +29,13 @@ export default class VideoEditPage extends React.Component {
         })
 
         this.setState({ frames })
+    }
+
+    componentDidMount() {
+        const { clientWidth, clientHeight } = document.querySelector(
+            '#editor-screen',
+        )
+        this.setState({ editorWidth: clientWidth, editorHeight: clientHeight })
     }
 
     nextFrame() {
@@ -51,14 +57,18 @@ export default class VideoEditPage extends React.Component {
     }
 
     exportFrames() {
+        const pad = num => {
+            return `000${num}`.slice(-3)
+        }
+
         const zip = new JSZip()
         this.state.frames.map(({ i, frameUri }) => {
             const png = frameUri.split(',')[1]
-            zip.file(`frame-${i}.png`, png, { base64: true })
+            zip.file(`frame${pad(i)}.png`, png, { base64: true })
         })
 
         zip.generateAsync({ type: 'blob' }).then(content => {
-            saveAs(content, 'images-export.zip')
+            saveAs(content, 'lazy3d-frames-export.zip')
         })
     }
 
@@ -102,6 +112,8 @@ export default class VideoEditPage extends React.Component {
         const { frames, currentFrameIdx } = this.state
         const currentFrame = frames[currentFrameIdx]
 
+        console.log('render', currentFrame)
+
         return (
             <div className={styles.body}>
                 <div className={styles.header} />
@@ -143,7 +155,15 @@ export default class VideoEditPage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.screen} />
+                    <div className={styles.screen} id="editor-screen">
+                        <ImageEditor
+                            imgSrc={currentFrame.frameUri}
+                            currentIndex={currentFrameIdx}
+                            updateFrame={this.updateFrame}
+                            width={this.state.editorWidth}
+                            height={this.state.editorHeight}
+                        />
+                    </div>
                     <div className={styles.frameSelector}>
                         <div className={styles.frameSelectorHeader}>
                             <p>Frame</p>
@@ -170,7 +190,10 @@ export default class VideoEditPage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.saveBox}>
+                    <div
+                        className={styles.saveBox}
+                        onClick={this.exportFrames.bind(this)}
+                    >
                         <div className={styles.saveBoxHeader}>
                             <p>Save</p>
                         </div>
@@ -182,7 +205,10 @@ export default class VideoEditPage extends React.Component {
 
                 <div className={styles.toolBarCenterBox}>
                     <div className={styles.mediaControls}>
-                        <div className={styles.leftArrow}>
+                        <div
+                            className={styles.leftArrow}
+                            onClick={this.prevFrame.bind(this)}
+                        >
                             <img id="laBtn" src={require('images/Editor/left arrow.png')} />
                         </div>
                         <div className={styles.playButton}>
@@ -191,7 +217,10 @@ export default class VideoEditPage extends React.Component {
                                 src={require('images/Editor/play-button.png')}
                             />
                         </div>
-                        <div className={styles.rightArrow}>
+                        <div
+                            className={styles.rightArrow}
+                            onClick={this.nextFrame.bind(this)}
+                        >
                             <img id="raBtn" src={require('images/Editor/right arrow.png')} />
                         </div>
                     </div>
