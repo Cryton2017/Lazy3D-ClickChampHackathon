@@ -21,6 +21,9 @@ export default class VideoEditPage extends React.Component {
             editorHeight: 0,
             html: '',
         }
+
+        this.addImageToEditor = this.addImageToEditor.bind(this)
+        this.changeImage = this.changeImage.bind(this)
     }
 
     componentWillMount() {
@@ -72,25 +75,27 @@ export default class VideoEditPage extends React.Component {
         })
     }
 
-    addImageToEditor(Frames) {
-        var length = Frames.length
+    addImageToEditor() {
+        var length = this.state.frames.length;
         var FrameDisplay = []
 
-        var temp = '<div className=\'styles.photoFramesContainer\'>'
-        for (var i = 1; i <= length; i++) {
-            temp =
-        temp +
-        '<div className=\'styles.photoFrame\'>' +
-        '<img id=\'img' +
-        i +
-        '\' src=\'' +
-        Frames[i] +
-        '\' />' +
-        '</div>'
-        }
-        temp = temp + '</div>'
+        const divArray = []
+
+        const frames = this.state.frames
+        console.log(frames)
+        for (var i = 0; i < length; i++) {
+            divArray.push(<div className={styles.photoFrame}><img id={`img${i}`} className={styles.images} src={frames[i].frameUri} /></div>)
+        } 
+        var temp = <div className={styles.photoFramesContainer}>
+            {divArray}
+        </div>
+        
         return temp
     }
+
+    // changeImage(frameID){
+    //     this.setState({ currentFrameIdx: frameID })
+    // }
 
     render() {
         const { frames, currentFrameIdx } = this.state
@@ -152,7 +157,7 @@ export default class VideoEditPage extends React.Component {
                         <div className={styles.frameSelectorHeader}>
                             <p>Frame</p>
                         </div>
-            this.addImageToEditor()
+                        {this.addImageToEditor()}
                     </div>
                 </div>
                 <div className={styles.BTS}>

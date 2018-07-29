@@ -25,9 +25,10 @@ export default class HomePage extends React.PureComponent {
     render() {
         return (
             <div className={styles.body}>
-                <h1 className={styles.heading1}>
-                    <FormattedMessage {...messages.header} />
-                </h1>
+                <div className={styles.heading1}>
+                    <img src={require('images/Logo/logo.png')} />
+                </div>
+                
                 <p className={styles.paragraph}>
                     <FormattedMessage {...messages.info1} />
                     <br />
