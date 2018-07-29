@@ -98,8 +98,14 @@ class VideoSplitter extends Component {
     render() {
         return (
             <div>
+                <div className="upload-btn-wrapper">
+                    {/* <button className="btn" >Upload a file</button> */}
+                    <label className="btn">Choose File
+                        <input type="file" onChange={this.handleChange} name="myfile"  accept="video/*"/>
+                    </label>
+                </div>
                 <div>
-                    <input type="file" onChange={this.handleChange} accept="video/*" />
+                    {/* <input type="file" onChange={this.handleChange} accept="video/*" /> */}
                     <video className={styles.video} />
                 </div>
                 <div className={styles.progress}>
