@@ -23,7 +23,6 @@ export default class VideoEditPage extends React.Component {
         }
 
         this.addImageToEditor = this.addImageToEditor.bind(this)
-        this.changeImage = this.changeImage.bind(this)
     }
 
     componentWillMount() {
