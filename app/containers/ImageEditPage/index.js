@@ -25,44 +25,22 @@ export default class VideoEditPage extends React.PureComponent {
 
     componentWillMount() {
         const frames = BadPractice.get()
-        //this.addImageToEditor(frames);
+        this.addImageToEditor(frames);
     }
 
-    // addImageToEditor(Frames){
-    //     var length = Frames.length;
-    //     var FrameDisplay = [];
-    //     console.log(length);
+    addImageToEditor(Frames){
+        var length = Frames.length;
+        var FrameDisplay = [];
 
-    //     for(var i=1; i<=length; i++){
-    //         var temp = "<div className='styles.photoFrame'>" +
-    //                     "<img id='img"+i+"' src='"+ Frames[i] + "' />" +
-    //                    "</div><br />";
-    //         FrameDisplay.push(temp);
-    //         console.log(FrameDisplay);
-    //     }
-
-    //     for(var i=0; i<=length; i++){
-    //         this.setState(prevState => ({
-    //             FrameDisplay: [...prevState.FrameDisplay, Frames[i]]
-    //           }))
-    //     }
-
-    //     this.setState(prevState => ({
-    //         html: "<div className='styles.photoFramesContainer'>"
-    //     }))
-
-    //     for(var i=0; i<length; i++){
-    //         this.setState(prevState => ({
-    //             html: [...prevState.html, FrameDisplay[i]]
-    //         }))
-    //     }
-
-    //     this.setState(prevState => ({
-    //         html: [...prevState.html, "</div>"]
-    //     }))
-
-    //     console.log(this.state.html);
-    // }
+        var temp = "<div className='styles.photoFramesContainer'>";
+        for(var i=1; i<=length; i++){
+            temp = temp +"<div className='styles.photoFrame'>" +
+                            "<img id='img"+i+"' src='"+ Frames[i] + "' />" +
+                         "</div>";
+        }
+        temp = temp + "</div>";
+        return temp;
+    }
 
     render() {
         return (
@@ -92,11 +70,13 @@ export default class VideoEditPage extends React.PureComponent {
                         </div>
                     </div>
                     <div className={styles.screen}> 
+
                     </div>
                     <div className={styles.frameSelector}>
                         <div className={styles.frameSelectorHeader}>
                             <p>Frame</p>
                         </div>
+                        this.addImageToEditor()
                     </div>
                 </div>
                 <div className={styles.BTS}>
