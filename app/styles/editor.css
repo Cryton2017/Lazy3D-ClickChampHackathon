@@ -92,6 +92,23 @@
 }
 
 /*----------------------------------------*/
+
+:local(.photoFramesContainer){
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    width: 100%;
+}
+
+:local(.photoFrame){
+    border: 2px solid #666666;
+    position: relative;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 20%;
+}
+
 /*Editor Tools:*/
 
 :local(.toolSelection){
