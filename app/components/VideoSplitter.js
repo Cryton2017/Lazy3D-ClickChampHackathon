@@ -51,7 +51,7 @@ class VideoSplitter extends Component {
                     const time = frameTimes[i]
                     video.currentTime = time
                     await this.timeout(400)
-                    await this.generateFrame(video)
+                    await this.generateFrame(video, i)
                     this.setState({ percentage: ((i + 1) / frameTimes.length) * 100 })
 
                     if (this.props.percentage) {
@@ -77,7 +77,7 @@ class VideoSplitter extends Component {
         })
     }
 
-    async generateFrame(video) {
+    async generateFrame(video, i) {
         const canvas = document.createElement('canvas')
         canvas.width = video.videoWidth
         canvas.height = video.videoHeight
@@ -86,7 +86,7 @@ class VideoSplitter extends Component {
 
         const frameUri = canvas.toDataURL()
 
-        this.state.frames.push(frameUri)
+        this.state.frames.push({ i, frameUri })
         // const img = new Image()
         // img.src = frameUri
         // img.className = styles.thumbnail

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
 import styles from './ImageEditor.css'
-import GrahamScan from 'graham_scan'
-import sortByDistance from 'sort-by-distance'
 
 class ImageEditor extends Component {
     constructor(props) {
@@ -17,8 +15,15 @@ class ImageEditor extends Component {
 
     componentDidMount() {
         this.loadImage()
-
         this.setupSelectTool()
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (this.props.currentIndex === newProps.currentIndex) {
+            return false
+        }
+
+        this.loadImage()
     }
 
     loadImage() {
@@ -28,7 +33,7 @@ class ImageEditor extends Component {
 
         const context = canvas.getContext('2d')
 
-        const imgWidth = 450
+        const imgWidth = 900
         const img = new Image(imgWidth, imgWidth * 0.5625)
 
         img.onload = () => {
@@ -145,6 +150,19 @@ class ImageEditor extends Component {
         const img = this.state.img
         imgContext.drawImage(img, 0, 0, img.width, img.height)
         imgContext.restore()
+        this.save()
+    }
+
+    clearClip() {
+        this.loadImage()
+        this.save()
+    }
+
+    save() {
+        const canvas = document.querySelector('#image-canvas')
+        const frameUri = canvas.toDataURL()
+
+        this.props.updateFrame(this.props.currentIndex, frameUri)
     }
 
     render() {
@@ -161,7 +179,7 @@ class ImageEditor extends Component {
           Clear Select
                 </button>
                 <button
-                    onClick={this.loadImage.bind(this)}
+                    onClick={this.clearClip.bind(this)}
                     className={styles.clearButton}
                 >
           Clear Clip
