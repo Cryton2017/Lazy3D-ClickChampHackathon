@@ -40,6 +40,19 @@
     background: linear-gradient(#72808F, transparent);
 }
 
+:local(.headerImage){
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 10%;
+}
+
+#headerImage{
+    width: 100%;
+    height: 100%;
+}
+
 /*Toolbar, Screen and Frames Section:*/
 
 :local(.TSF){

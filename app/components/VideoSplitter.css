@@ -1,6 +1,7 @@
 :local(.video) {
   width: 200px;
-  background: blue;
+  background: #F7F7F7;
+  border: grey 1px solid;
 }
 
 :local(.thumbnail) {
@@ -10,6 +11,8 @@
 }
 
 :local(.progress){
+  position: relative;
+  top: 50%;
   border: 1px solid grey;
   background-color: grey;
   border-radius: 20px;

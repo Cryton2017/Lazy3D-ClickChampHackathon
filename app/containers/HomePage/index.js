@@ -30,13 +30,7 @@ export default class HomePage extends React.PureComponent {
                 </div>
                 
                 <p className={styles.paragraph}>
-                    <FormattedMessage {...messages.info1} />
-                    <br />
-                    <FormattedMessage {...messages.info2} />
-                    <br />
-                    <FormattedMessage {...messages.info3} />
-                    <br />
-                    <FormattedMessage {...messages.info4} />
+                    <FormattedMessage {...messages.info5} />
                 </p>
                 <div className={styles.videoSplitter}>
                     <VideoSplitter
@@ -44,9 +38,42 @@ export default class HomePage extends React.PureComponent {
                         percentage={this.waitForRender}
                     />
                 </div>
-                {/* <div className={styles.trash}>
-                    <DragDrop />
-                </div> */}
+                <div className={styles.InfoImage}>
+                    <div className={styles.InfoImage1}>
+                        <img id="img"src={require('images/Info/1-film icon.png')} />
+                    </div>
+                    <div className={styles.InfoImage2}>
+                        <img id="img"src={require('images/Info/2-film-editor icon.png')} />
+                    </div>
+                    <div className={styles.InfoImage3}>
+                        <img id="img"src={require('images/Info/3-film with pen icon.png')} />
+                    </div>
+                    <div className={styles.InfoImage4}>
+                        <img id="img1"src={require('images/Info/4-pink tick icon.png')} />
+                    </div>
+                </div>
+                <div className={styles.InfoText}>
+                    <div className={styles.InfoText1}>
+                        <p id="text">
+                            <FormattedMessage {...messages.info1} />
+                        </p>    
+                    </div>
+                    <div className={styles.InfoText2}>
+                        <p id="text">
+                            <FormattedMessage {...messages.info2} />
+                        </p>    
+                    </div>
+                    <div className={styles.InfoText3}>
+                        <p id="text">
+                            <FormattedMessage {...messages.info3} />
+                        </p>    
+                    </div>
+                    <div className={styles.InfoText4}>
+                        <p id="text">
+                            <FormattedMessage {...messages.info4} />
+                        </p>    
+                    </div>
+                </div>
             </div>
         )
     }

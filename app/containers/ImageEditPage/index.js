@@ -104,7 +104,11 @@ export default class VideoEditPage extends React.Component {
 
         return (
             <div className={styles.body}>
-                <div className={styles.header} />
+                <div className={styles.header}>
+                    <div className={styles.headerImage}>
+                    <img id="headerImage" src={require('images/Logo/logoMini.png')} />
+                    </div>
+                </div>
                 <div className={styles.TSF}>
                     <div className={styles.tools}>
                         <div className={styles.toolsHeader}>

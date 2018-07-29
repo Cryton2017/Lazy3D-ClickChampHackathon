@@ -12,7 +12,7 @@ export default defineMessages({
     },
     info1: {
         id: 'app.components.HomePage.info1',
-        defaultMessage: 'select your video, no upload, no downloads, all privately from your own computer',
+        defaultMessage: 'Select your video, no upload, no downloads, all privately from your own computer',
     },
     info2: {
         id: 'app.components.HomePage.info2',
@@ -25,5 +25,9 @@ export default defineMessages({
     info4: {
         id: 'app.components.HomePage.info4',
         defaultMessage: 'Export your images in a compressed folder with links to open source free to use programs to take you the rest of the way',
+    },
+    info5: {
+        id: 'app.components.HomePage.info5',
+        defaultMessage: 'Photogrammetry: Less Steps',
     },
 })

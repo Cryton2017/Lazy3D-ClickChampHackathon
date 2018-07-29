@@ -1,7 +1,7 @@
 :local(.body){
     font-size: 23px;
-    font-family: 'Lucida Sans';
-    position: absolute;
+    font-family: Verdana;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -46,4 +46,102 @@
     position: relative;
     right: 5%;
     bottom: 5%;
+}
+
+:local(.InfoImage){
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    top: 10%;
+    width: 100%;
+}
+
+:local(.InfoImage1){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+
+:local(.InfoImage2){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+
+:local(.InfoImage3){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+
+:local(.InfoImage4){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+
+#img{
+    width: 50%;
+    height: 50%;
+}
+
+#img1{
+    width: 50%;
+    height: 100%;
+}
+
+:local(.InfoText){
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: 0;
+    top: 10%;
+    width: 100%;
+}
+
+:local(.InfoText1){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+
+:local(.InfoText2){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+:local(.InfoText3){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+:local(.InfoText4){
+    width: 25%;
+    height: 100%;
+    position: relative;
+    left: 5%;
+    top: 25%;
+}
+
+#text{
+    width: 50%;
 }
