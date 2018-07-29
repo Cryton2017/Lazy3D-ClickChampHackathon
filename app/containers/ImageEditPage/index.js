@@ -21,6 +21,8 @@ export default class VideoEditPage extends React.Component {
             editorHeight: 0,
             html: '',
         }
+
+        this.editor = React.createRef()
     }
 
     componentWillMount() {
@@ -51,6 +53,7 @@ export default class VideoEditPage extends React.Component {
     }
 
     updateFrame(index, newFrame) {
+    // console.log('UpdateFrames:', this)
         const newFrames = [...this.state.frames]
         newFrames[index] = { i: index, frameUri: newFrame }
         this.setState({ frames: newFrames })
@@ -92,10 +95,13 @@ export default class VideoEditPage extends React.Component {
         return temp
     }
 
+    doClip() {
+        this.editor.current.clip()
+    }
+
     render() {
         const { frames, currentFrameIdx } = this.state
         const currentFrame = frames[currentFrameIdx]
-
         console.log('render', currentFrame)
 
         return (
@@ -131,10 +137,13 @@ export default class VideoEditPage extends React.Component {
                                     src={require('images/Editor/brushBlack.png')}
                                 />
                             </div>
-                            <div className={styles.eyedropper}>
+                            <div
+                                className={styles.eyedropper}
+                                onClick={this.doClip.bind(this)}
+                            >
                                 <img
                                     id="eyedropperBtn"
-                                    src={require('images/Editor/eyedropper.png')}
+                                    src={require('images/Editor/clip.png')}
                                 />
                             </div>
                         </div>
@@ -143,9 +152,10 @@ export default class VideoEditPage extends React.Component {
                         <ImageEditor
                             imgSrc={currentFrame.frameUri}
                             currentIndex={currentFrameIdx}
-                            updateFrame={this.updateFrame}
+                            updateFrame={this.updateFrame.bind(this)}
                             width={this.state.editorWidth}
                             height={this.state.editorHeight}
+                            ref={this.editor}
                         />
                     </div>
                     <div className={styles.frameSelector}>
