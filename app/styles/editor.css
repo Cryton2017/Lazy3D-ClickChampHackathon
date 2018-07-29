@@ -1,6 +1,29 @@
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    background: #CCCCCC; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #292929; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #666666; 
+}
+
 :local(.body){
     font-family: Arial;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -17,40 +40,23 @@
     background: linear-gradient(#72808F, transparent);
 }
 
+/*Toolbar, Screen and Frames Section:*/
+
 :local(.TSF){
     display: flex;
-    justify-content: left;
-    height: 100%;
+    justify-content: center;
+    height: 70%;
 }
 
 :local(.screen){
+    position: relative;
     width: 70%;
-    height: 70%;
     border: 20px solid #666666;
 }
 
-:local(.bottomToolBar){
-    position: relative;
-    left: 3%;
-    top: 0;
-    background: linear-gradient(#CCFFFF, transparent) #999999;
-    color:  #ccffff;
-    width: 70%;
-    height: 4%;
-}
-
-:local(.toolBarCenterBox){
-    position: relative;
-    top: -3%;
-    left: 33%;
-    height: 7%;
-    width: 10%;
-    background: linear-gradient(#CCFFFF, transparent) #666666;
-}
-
-:local(.tools){
-    width: 3%;
-    height: 5%;
+:local(.toolsHeader){
+    width: 100%;
+    height: 9%;
     font-size: xx-small;
     font-family: Arial;
     color: #C0C0C0;
@@ -58,3 +64,332 @@
     border: solid 2px #666666;
     background: linear-gradient(#000000, #666666);
 }
+
+:local(.tools){
+    width: 4%;
+    height: 65%;
+    background: #999999;
+    border: 2px solid #CCCCCC;
+}
+
+:local(.frameSelectorHeader){
+    width: 100%;
+    height: 6%;
+    font-size: xx-small;
+    font-family: Arial;
+    color: #C0C0C0;
+    text-align: center;
+    border: solid 2px #666666;
+    background: linear-gradient(#000000, #666666);
+}
+
+:local(.frameSelector){
+    overflow-y: scroll;
+    width: 12%;
+    height: 100%;
+    background: #999999;
+    border: 2px solid #CCCCCC;
+}
+
+/*----------------------------------------*/
+/*Editor Tools:*/
+
+:local(.toolSelection){
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    height: 70%;
+}
+
+:local(.lassoWhite){
+    position: relative;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 20%;
+}
+
+#lassoWhiteBtn{
+    width: 100%;
+    height: 90%;
+}
+
+#lassoWhiteBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.lassoBlack){
+    position: relative;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: 20%;
+}
+
+#lassoBlackBtn{
+    width: 100%;
+    height: 90%;
+}
+
+#lassoBlackBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.brushWhite){
+    position: relative;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    height: 15%;
+}
+
+#brushWhiteBtn{
+    width: 100%;
+    height: 90%;
+}
+
+#brushWhiteBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.brushBlack){
+    position: relative;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    height: 15%;
+}
+
+#brushBlackBtn{
+    width: 100%;
+    height: 90%;
+}
+
+#brushBlackBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.eyedropper){
+    position: relative;
+    top: 43%;
+    left: 10%;
+    width: 80%;
+    height: 15%;
+}
+
+#eyedropperBtn{
+    width: 100%;
+    height: 90%;
+}
+
+#eyedropperBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+/*----------------------------------------*/
+/*Bottom Toolbar and Save Section:*/
+
+:local(.BTS){
+    display: flex;
+    justify-content: center;
+    height: 20%;
+}
+
+:local(.bottomToolBar){
+    position: relative;
+    left: 1%;
+    background: linear-gradient(#CCFFFF, transparent) #999999;
+    color:  #ccffff;
+    width: 70%;
+    height: 30%;
+}
+
+:local(.saveBox){
+    position: relative;
+    left: 2%;
+    top: 10%;
+    width: 10%;
+    height: 80%;
+    background: #999999;
+    border: 2px solid #CCCCCC;
+}
+
+:local(.saveBoxHeader){
+    width: 100%;
+    height: 30%;
+    font-size: xx-small;
+    font-family: Arial;
+    color: #C0C0C0;
+    text-align: center;
+    border: solid 2px #666666;
+    background: linear-gradient(#000000, #666666);
+}
+
+/*----------------------------------------*/
+/*Redo, Undo and Delete Section:*/
+
+:local(.RUD){
+    display: flex;
+    justify-content: right;
+    height: 100%;
+    width: 10%;
+    position: relative;
+    left: 90%;
+    top: 10%;
+}
+
+:local(.undoButton){
+    position: relative;
+    left: 1;
+    top: 10%;
+    height: 80%;
+    width: 35%;
+}
+
+#undoBtn{
+    height: 80%;
+    width: 70%;
+}
+
+#undoBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.redoButton){
+    position: relative;
+    left: 1%;
+    top: 10%;
+    height: 80%;
+    width: 35%;
+}
+
+#redoBtn{
+    height: 80%;
+    width: 70%;
+}
+
+#redoBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.deleteButton){
+    position: relative;
+    left: 1%;
+    top: 10%;
+    height: 80%;
+    width: 30%;
+}
+
+#deleteBtn{
+    height: 80%;
+    width: 70%;
+}
+
+#deleteBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+/*----------------------------------------*/
+
+:local(.saveButton){
+    position: relative;
+    left: 20%;
+    top: 5%;
+    height: 60%;
+    width: 80%;
+}
+
+#saveBtn{
+    height: 100%;
+    width: 80%;
+}
+
+#saveBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.toolBarCenterBox){
+    position: relative;
+    top: -18%;
+    left: 39.9%;
+    height: 7%;
+    width: 10%;
+    background: linear-gradient(#CCFFFF, transparent) #666666;
+}
+
+/*Media Controls Section:*/
+
+:local(.mediaControls){
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    left: 0%;
+}
+
+:local(.leftArrow){
+    height: 100%;
+    width: 30%;
+    position: relative;
+    left: 0%;
+    top: 15%;
+}
+
+#laBtn{
+    height: 70%;
+    width: 80%;
+}
+
+#laBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.playButton){
+    height: 100%;
+    width: 40%;
+    position: relative;
+    
+    top: 10%;
+}
+
+#playBtn{
+    height: 80%;
+    width: 100%;
+}
+
+#playBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+:local(.rightArrow){
+    height: 100%;
+    width: 30%;
+    position: relative;
+    left: 0%;
+    top: 15%;
+}
+
+#raBtn{
+    height: 70%;
+    width: 80%;
+}
+
+#raBtn:hover{
+    border-radius: 5px;
+    background: linear-gradient(#CCFFFF, transparent) #888888;
+}
+
+/*----------------------------------------*/
+
